@@ -3,7 +3,6 @@ package org.securitydemo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.securitydemo.Repository.StudentRepo;
-import org.securitydemo.config.StudentDetailService;
 import org.securitydemo.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
