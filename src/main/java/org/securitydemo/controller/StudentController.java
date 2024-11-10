@@ -22,6 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class StudentController {
 
+    @Autowired
     private StudentRepo studentRepo;
     @Autowired
     private ModelMapper modelMapper;
@@ -33,15 +34,6 @@ public class StudentController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody StudentDTO studentDTO) {
-        try {
-            Student student = modelMapper.map(studentDTO, Student.class);
-            Student savedStudent = studentRepo.save(student);
-            StudentDTO responseDTO = modelMapper.map(savedStudent, StudentDTO.class);
-            return ResponseEntity.status(201).body(responseDTO);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error occurred while registering student: " + e.getMessage());
-        }
+        return null;
     }
 }
