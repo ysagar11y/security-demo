@@ -19,27 +19,10 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user= User.withUsername("Sagar").password(passwordEncoder().encode("123")).roles("USER").build();
-        UserDetails admin = User.withUsername("Admin").password(passwordEncoder().encode("admin")).roles("ADMIN").build();
-        return new InMemoryUserDetailsManager(user, admin);
-    }
-
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/register").permitAll()
-                        .requestMatchers("/api/login").authenticated()
-                )// Enables form login with default settings
-                .build();
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return http.csrf(csrf -> csrf.disable()).build();
     }
 }
 
