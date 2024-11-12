@@ -23,7 +23,14 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf(AbstractHttpConfigurer::disable).build();
+        return http.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers("/api/register").authenticated()
+                        .requestMatchers("/api/getStudent/{email}").permitAll()
+                        .requestMatchers("/api/getAll").permitAll())
+                .httpBasic(withDefaults())
+                .formLogin(withDefaults())
+                .build();
     }
 }
 
