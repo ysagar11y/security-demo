@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/api/register").authenticated()
                         .requestMatchers("/api/getStudent/{email}").permitAll()
-                        .requestMatchers("/api/getAll").permitAll())
+                        .requestMatchers("/api/getAll").authenticated())
                 .httpBasic(withDefaults())
                 .formLogin(withDefaults())
                 .build();
@@ -40,10 +40,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authentication) throws Exception {
-        return authentication.getAuthenticationManager();
-    }
+
+
 }
 
 

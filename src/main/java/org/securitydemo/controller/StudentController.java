@@ -47,4 +47,5 @@ public class StudentController {
         studentService.registerStudent(studentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(studentDTO);
     }
+
 }
