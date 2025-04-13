@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class StudentDTO {
 
     @NotBlank(message = "Email is required")
-    @Email(message = "Please provide a valid email address")
+    //@Email(message = "Please provide a valid email address")
     private String email;
 
     @NotBlank(message = "Username is required")
